@@ -1,0 +1,36 @@
+.MyChats{
+    width:34%;
+    border:2px solid black;
+    display:flex;
+    flex-direction: column;
+    /* z-index: 10; */
+    position: relative;
+}
+.MyChatsheading{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.MyChatstitle{
+    font-size: 25px;
+    margin-left: 10px;
+}
+.option{
+    font-size: 13px;
+    margin-right: 10px;
+    background-color: rgba(22, 114, 114, 0.434);
+    border-radius: 5px;
+    font-weight: bold;
+    padding:8px;
+
+}
+
+.AllChats{
+    display:flex;
+    border:1px solid yellow;
+    height:70vh;
+    width:90%;
+    margin:auto auto;
+    overflow: auto;
+}

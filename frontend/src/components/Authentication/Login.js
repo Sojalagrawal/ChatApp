@@ -1,17 +1,21 @@
 import React,{useState} from 'react';
 import '../../css/SignIn.css'
-import {Link,useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 // import { toast } from 'react-toastify';
 
 
+
 export default function Login() {
-  const navigate=useNavigate();
+  // const navigate=useNavigate();
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
 
 //    //Toast functions
 //    const notifyA=(msg)=>toast.error(msg);
 //    const notifyB=(msg)=>toast.success(msg);
+
+  
+  
 
   const postData=()=>{
     console.log("hi");
@@ -37,7 +41,7 @@ export default function Login() {
         </div>
         <div className="loginForm2">
           Don't have an account ?
-          <Link to="/">
+          <Link to="/signup">
             <span style={{ color: "blue", cursor: "pointer" }}>Sign Up</span>
           </Link>
         </div>

@@ -1,0 +1,58 @@
+.SideDrawer{
+    display:flex;
+    justify-content: space-between;
+    border:2px solid white;
+    background-color: rgb(122, 198, 198);
+    height:35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.search{
+    display:flex;
+    align-items: center;
+    /* border:1px solid red; */
+    margin-left:10px;
+}
+#search{
+    margin:2px;
+}
+
+.heading{
+    margin-left:-60px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0.5,
+  'opsz' 17
+}
+
+#img-p{
+    width:25px;
+    height:25px;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+.profile{
+    display:flex;
+    align-items: center;
+    
+}
+.box{
+    display:flex;
+    flex-direction: row;
+    border:1px solid red;
+    margin:auto auto;
+    height:90vh;
+    width:95vw;
+    margin-top:10px;
+    justify-content: space-between;
+}

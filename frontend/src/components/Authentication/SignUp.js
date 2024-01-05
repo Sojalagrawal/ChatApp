@@ -9,7 +9,7 @@ export default function SignUp() {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [confirmpassword,setConfirmpassword]=useState("");
-  const [pic,setPic]=useState(""); //pic saves url
+  const [pic,setPic]=useState("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"); //pic saves url
   const [image,setImage]=useState("");
 
   
@@ -43,7 +43,7 @@ export default function SignUp() {
                name:name,
                email:email,
                password:password,
-               pic:pic?pic:undefined,
+               pic:pic,
 
           })
      }).then(res=>res.json())
@@ -63,7 +63,7 @@ export default function SignUp() {
 }
 
     const postDetails=()=>{
-     if(image.type==="image/png" || image.type==="image/png" || image===""){
+     if(image.type==="image/png" || image.type==="image/jpeg" || image===""){
           if(image===""){
                notifyC("You have no added profile pic");
           }
@@ -76,6 +76,8 @@ export default function SignUp() {
                body:data,
           }).then(res=>res.json())
           .then(data=>{
+               console.log(data);
+               console.log(data.url);
                setPic(data.url);
                submitHandler();
           })

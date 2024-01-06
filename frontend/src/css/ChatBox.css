@@ -2,6 +2,7 @@
     width:64%;
     border:2px solid black;
     background-color: rgb(171, 219, 225);
+    position: relative;
 }
 .headingChatBox{
     height:5vh;

@@ -7,17 +7,22 @@ const ChatContext=createContext();
 const ChatProvider=({children})=>{
     const navigate=useNavigate();
     const [user,setUser]=useState();
+    const [chats,setChats]=useState([]);
+    const [searchspace,setSearchSpace]=useState(false);
+    const [name,setName]=useState("");
+
+
     
     useEffect(()=>{
         const userinfo=JSON.parse(localStorage.getItem("userinfo"));
         setUser(userinfo);
         if(!userinfo){
-            navigate("/");
+            navigate("/login");
         }
-    },[navigate]); //when we navigate to other page it will run
+    },[]); 
 
     return(
-        <ChatContext.Provider value={{user,setUser}}>
+        <ChatContext.Provider value={{user,setUser,chats,setChats,searchspace,setSearchSpace,name,setName}}>
             {children}
         </ChatContext.Provider>
     )

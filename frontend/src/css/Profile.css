@@ -1,0 +1,32 @@
+.profileuser{
+    position:absolute;
+    width:20%;
+    height:35%;
+    background-color: rgb(171, 219, 225);
+    z-index:10;
+    margin:auto auto;
+    top:30%;
+    left:40%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    box-sizing: border-box;
+    z-index:10;
+}
+
+#profilepic{
+    /* max-height:30%; */
+    height:80px;
+
+    width:80px;
+    /* min-width:10%; */
+
+    border-radius: 1000px;
+    margin-bottom:5px;
+}
+.para{
+    margin:2px;
+    box-sizing: border-box;
+}

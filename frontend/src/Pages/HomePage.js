@@ -12,5 +12,5 @@ export default function HomePage() {
         else{
             navigate("/login");
         }
-    },[navigate]); 
+    },[]); 
 }

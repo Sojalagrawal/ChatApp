@@ -1,25 +1,47 @@
 import React,{useState} from 'react';
 import '../../css/SignIn.css'
-import {Link} from 'react-router-dom';
-// import { toast } from 'react-toastify';
+import {Link,useNavigate} from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
 export default function Login() {
-  // const navigate=useNavigate();
+  const navigate=useNavigate();
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
 
-//    //Toast functions
-//    const notifyA=(msg)=>toast.error(msg);
-//    const notifyB=(msg)=>toast.success(msg);
+   //Toast functions
+   const notifyA=(msg)=>toast.error(msg);
+   const notifyB=(msg)=>toast.success(msg);
 
+
+const postData=()=>{
+  fetch("http://localhost:5000/api/user/login",{
+       method:"post",
+       headers:{
+            "Content-Type":"application/json"
+       },
+       body:JSON.stringify({
+            email:email,
+            password:password,
+       })
+  }).then(res=>res.json())
+  .then(data=>{
+       console.log(data);
+       if(data.message){
+            const s=data.message;
+            notifyA(s);
+       }
+       else{
+            notifyB("Logged in");
+            localStorage.setItem("userinfo",JSON.stringify(data));
+            navigate("/chats");
+       }
+  })
+
+}
   
   
-
-  const postData=()=>{
-    console.log("hi");
-  }
   return (
     <div className='signIn'>
       <div className='login'>

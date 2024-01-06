@@ -4,12 +4,16 @@ import ChatBox from '../ChatBox';
 import MyChats from '../MyChats';
 import Search from '../Search';
 import { ChatState } from '../../context/ChatProvider';
+import Profile from './Profile';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const SideDrawer = () => {
-  const {user}=ChatState();
-  const [searchspace,setSearchSpace]=useState(false);
+  const navigate=useNavigate();
+  const {user,searchspace,setSearchSpace}=ChatState();
+  // const [searchspace,setSearchSpace]=useState(false);
+  const [profileuser,setprofileuser]=useState(false);
   const sojal=()=>{
     if(searchspace){
       setSearchSpace(false);
@@ -19,6 +23,17 @@ const SideDrawer = () => {
 
     }
   }
+
+  const sojal1=()=>{
+    if(profileuser){
+      setprofileuser(false);
+    }
+    else{
+      setprofileuser(true);
+
+    }
+  }
+
   return (
     <>
       <div className='SideDrawer'>
@@ -30,13 +45,21 @@ const SideDrawer = () => {
           </div>
           <div className='heading'>TALK-A-TIVE</div>
           <div className='profile'>
-            <img src={user.pic?user.pic:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"} id="img-p"></img>
+            <img src={user.pic?user.pic:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"} id="img-p" onClick={sojal1}></img>
+            <div onClick={()=>{
+              localStorage.clear()
+              navigate("/signup")}}>
+              <span class="material-symbols-outlined">
+                  logout
+              </span>
+            </div>
           </div>
       </div>
       <div className='box'>
         {searchspace && <Search/>}
         <MyChats/>
         <ChatBox/>
+        {profileuser && <Profile/>}
       </div>
     </>
   )

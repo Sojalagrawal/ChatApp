@@ -6,13 +6,15 @@ import Search from '../Search';
 import { ChatState } from '../../context/ChatProvider';
 import Profile from './Profile';
 import { useNavigate } from 'react-router-dom';
+import CreateGroupChat from './CreateGroupChat';
+
+
 
 
 
 const SideDrawer = () => {
   const navigate=useNavigate();
-  const {user,searchspace,setSearchSpace}=ChatState();
-  // const [searchspace,setSearchSpace]=useState(false);
+  const {user,searchspace,setSearchSpace,modalGroup}=ChatState();
   const [profileuser,setprofileuser]=useState(false);
   const sojal=()=>{
     if(searchspace){
@@ -33,6 +35,9 @@ const SideDrawer = () => {
 
     }
   }
+
+  
+ 
 
   return (
     <>
@@ -61,6 +66,7 @@ const SideDrawer = () => {
         <ChatBox/>
         {profileuser && <Profile/>}
       </div>
+      {modalGroup && <CreateGroupChat />}
     </>
   )
 }

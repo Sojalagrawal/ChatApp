@@ -1,0 +1,79 @@
+.CreateGroupChat{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    border:3px solid rgb(47, 0, 255);
+    
+}
+.CreateGroupChat::before{
+    content:"";
+    left:0px;
+    top:0px;
+    height:100%;
+    width:100%;
+    background-color: rgb(42, 50, 67);
+    opacity: 0.4;
+    z-index: 8;
+    position: absolute;
+    
+}
+
+.Group-modal1{
+    position:absolute;
+    width:300px;
+    background-color: rgb(110, 203, 203);
+    height:300px;
+    z-index:20;
+    top:30%;
+    left:40%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: aliceblue;
+}
+
+.groupip{
+    display: flex;
+    /* border:1px solid red; */
+    width:95%;
+    margin:5px;
+    align-items: center;
+    justify-content: center;
+}
+.groupip button{
+    margin:auto;
+    width:60%;
+    margin:5px;
+    height:30px;
+    border-radius: 5px;
+}
+ 
+
+
+#create{
+    border-radius: 5px;
+    padding:8px;
+    cursor:pointer;
+    margin-top:10px;
+   
+
+}
+#closebtn{
+    right: -8px;
+    top:-10px;
+    position: absolute;
+    cursor:pointer;
+}
+
+
+.material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 200,
+  'opsz' 24
+}

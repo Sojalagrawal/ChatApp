@@ -5,10 +5,11 @@ import { ChatState } from '../context/ChatProvider';
 
 
 const Search = () => {
-  const {user,chats,setChats,searchspace,setSearchSpace}=ChatState();
+  const {user,setSearchSpace,modalGroup,userarr,toggleLoad}=ChatState();
   const [search,setSearch]=useState("");
   const [searchResult,setSearchResult]=useState([]);
-  const [chat,setChat]=useState([]);
+
+
 
   var token=user.token;
 
@@ -32,15 +33,7 @@ const Search = () => {
     }
   },[search]);
 
-  useEffect(()=>{
-    if(chat){
-      if(!chats.includes(chat)){
-        chats.push(chat);
-        setChats(chats);
-        console.log(chats);
-      }
-    }
-  },[chat]);
+ 
 
 
   const accessChat=(userId)=>{
@@ -56,23 +49,41 @@ const Search = () => {
         }),
       }).then(res=>res.json())
       .then(data=>{
-          setChat(data);
           console.log(data);
+          toggleLoad();
       })
   }
 
+
+  
+  
+
   return (
     <div className='search1'>
+        <span class="material-symbols-outlined" id="closebtn1" onClick={()=>{setSearchSpace(false)}}>
+                  close
+        </span>
         <input type="text" placeholder='Enter user' id="ip" value={search} onChange={(e)=>{
           setSearch(e.target.value);
         }}></input>
         <div className="results">
-            {searchResult.map((userdata)=>{
+            {Array.isArray(searchResult) && searchResult.map((userdata)=>{
                return(
                  <div className='user-data' onClick={()=>{
-                    accessChat(userdata._id);
-                    setSearchSpace(false);
+                    if(!modalGroup){
+                        accessChat(userdata._id); 
+                        setSearchSpace(false);
+                    }
+                    else{
+                      if(!userarr.includes(userdata._id)){
+                        userarr.push(userdata._id);
+                        setSearchSpace(false);
+                      }
+                      //  setUserarr(userarr);
+                      //  console.log(userarr);
+                    }
                   }}>
+
                   <div className='user-panel'>
                     <img src={userdata.pic} id="userDataPic"></img>
                     <div className='userdiv'>

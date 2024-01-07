@@ -16,9 +16,11 @@
     align-items: center;
     /* border:1px solid red; */
     margin-left:10px;
+    
 }
 #search{
     margin:2px;
+    cursor: pointer;
 }
 
 .heading{

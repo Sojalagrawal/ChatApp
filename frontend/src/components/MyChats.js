@@ -1,28 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../css/MyChats.css";
 import { ChatState } from '../context/ChatProvider';
 
-
 const MyChats = () => {
-  const {user,chats,setChats,setName}=ChatState();
+  const {user,chats,setChats,setName,toggleModal,load,setLoad}=ChatState();
+
+
   useEffect(()=>{
     fetch("http://localhost:5000/api/chat",{
       method:"get",
       headers:{
             "Content-Type":"application/json",
-            "Authorization":"Bearer "+user.token,
+            "Authorization":"Bearer "+JSON.parse(localStorage.getItem("userinfo")).token,
       }
     }).then(res=>res.json())
     .then(data=>{
         setChats(data);
         console.log(chats);
     })
-  },[]);
+  },[load]);
+
+
 
   const accessChatDetail=((mychat)=>{
-    console.log("abc");
     var name;
-    if(!mychat.isGroupChat){
+    if(mychat.users && mychat.users.length >= 2 && !(mychat.isGroupChat)){
         name=mychat.users[0].name===user.name?mychat.users[1].name:mychat.users[0].name;
     }
     else{
@@ -35,13 +37,12 @@ const MyChats = () => {
     <div className="MyChats">
       <div className='MyChatsheading'>
         <div className="MyChatstitle">MyChats</div>
-        <div className='option'>New Group Chat</div>
+        <div className='option' onClick={()=>{toggleModal()}}>New Group Chat</div>
       </div>
       <div className='AllChats'>
-           {chats.map((mychat)=>{
-              
+           {Array.isArray(chats) && chats.map((mychat)=>{
               return(
-                <div className='chat-data' onClick={()=>{setName(accessChatDetail(mychat))}}>
+                <div className='chat-data' onClick={()=>{setName(accessChatDetail(mychat))}} key={mychat._id}>
                   <div className='chatdiv'>
                       {/* <p className='parauser'>{mychat.chatName}</p> */}
                       <p className='parauser'>{accessChatDetail(mychat)}</p>
@@ -57,6 +58,9 @@ const MyChats = () => {
               )
             })}
       </div>
+      
+
+      
     </div>
   )
 }

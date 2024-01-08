@@ -9,11 +9,22 @@ const ChatProvider=({children})=>{
 
     const [userarr,setUserarr]=useState([]);
     const [modalGroup,setmodalGroup]=useState(false);
+    const [UpdateGroupModal,setUpdateGroupModal]=useState(false);
+
     const [user,setUser]=useState();
     const [chats,setChats]=useState([]);
     const [searchspace,setSearchSpace]=useState(false);
     const [name,setName]=useState("");
     const [load,setLoad]=useState(false);
+    const [isGroupChat,setisGroupChat]=useState(false);
+    const [chatId,setChatId]=useState("false");
+    const [updateuser,setUpdateuser]=useState("");
+    const [groupchat,setGroupchat]=useState();
+
+
+
+
+    
   
     useEffect(()=>{
         const userinfo=JSON.parse(localStorage.getItem("userinfo"));
@@ -30,7 +41,17 @@ const ChatProvider=({children})=>{
         else{
           setmodalGroup(true);
         }
-        console.log(modalGroup);
+        // console.log(modalGroup);
+      }
+
+      const toggleUpdateGroup=()=>{
+        if(UpdateGroupModal){
+          setUpdateGroupModal(false);
+        }
+        else{
+          setUpdateGroupModal(true);
+        }
+        // console.log(modalGroup);
       }
 
       const toggleLoad=()=>{
@@ -45,7 +66,7 @@ const ChatProvider=({children})=>{
     
 
     return(
-        <ChatContext.Provider value={{user,setUser,chats,setChats,searchspace,setSearchSpace,name,setName,modalGroup,setmodalGroup,toggleModal,userarr,setUserarr,load,setLoad,toggleLoad}}>
+        <ChatContext.Provider value={{user,setUser,chats,setChats,searchspace,setSearchSpace,name,setName,modalGroup,setmodalGroup,toggleModal,userarr,setUserarr,load,setLoad,toggleLoad,toggleUpdateGroup,UpdateGroupModal,setUpdateGroupModal,isGroupChat,setisGroupChat,chatId,setChatId,updateuser,setUpdateuser,groupchat,setGroupchat}}>
             {children}
         </ChatContext.Provider>
     )

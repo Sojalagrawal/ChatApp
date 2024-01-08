@@ -27,6 +27,11 @@
     border-radius: 5px;
     
 }
-/* .headingChatBox{
-    background-color: aqua;
-} */
+
+
+.preview{
+    right:1%;
+    position: absolute;
+    top:1%;
+    cursor:pointer;
+}

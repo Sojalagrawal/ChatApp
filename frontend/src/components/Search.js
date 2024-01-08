@@ -5,7 +5,7 @@ import { ChatState } from '../context/ChatProvider';
 
 
 const Search = () => {
-  const {user,setSearchSpace,modalGroup,userarr,toggleLoad}=ChatState();
+  const {user,setSearchSpace,modalGroup,userarr,toggleLoad,UpdateGroupModal,setUpdateuser,setUpdateGroupModal}=ChatState();
   const [search,setSearch]=useState("");
   const [searchResult,setSearchResult]=useState([]);
 
@@ -66,15 +66,21 @@ const Search = () => {
         <input type="text" placeholder='Enter user' id="ip" value={search} onChange={(e)=>{
           setSearch(e.target.value);
         }}></input>
+
         <div className="results">
             {Array.isArray(searchResult) && searchResult.map((userdata)=>{
-               return(
-                 <div className='user-data' onClick={()=>{
-                    if(!modalGroup){
+              return(
+                <div className='user-data' onClick={()=>{
+                    if(UpdateGroupModal){
+                      setUpdateuser(userdata._id);
+                      setSearchSpace(false);
+                      
+                    }
+                    else if(!modalGroup){
                         accessChat(userdata._id); 
                         setSearchSpace(false);
                     }
-                    else{
+                    else if(modalGroup){
                       if(!userarr.includes(userdata._id)){
                         userarr.push(userdata._id);
                         setSearchSpace(false);

@@ -1,0 +1,108 @@
+.UpdateGroup{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    border:3px solid rgb(47, 0, 255);
+    
+}
+.UpdateGroup::before{
+    content:"";
+    left:0px;
+    top:0px;
+    height:100%;
+    width:100%;
+    background-color: rgb(42, 50, 67);
+    opacity: 0.4;
+    z-index: 8;
+    position: absolute;
+    
+}
+
+.Update-modal{
+    position:absolute;
+    width:300px;
+    background-color: rgb(110, 203, 203);
+    height:300px;
+    z-index:20;
+    top:30%;
+    left:40%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: aliceblue;
+}
+
+.updateip{
+    display: flex;
+    /* border:1px solid red; */
+    width:95%;
+    margin:5px;
+    align-items: flex-end;
+    justify-content: center;
+    /* border-radius: 5px; */
+}
+
+.updateip input{
+    border-radius: 5px;
+    width:45%;
+    border:1px solid red;
+}
+.updateip button{
+    margin:auto;
+    margin:5px;
+    height:25px;
+    border-radius: 5px;
+}
+ 
+
+
+#update{
+    border-radius: 5px;
+    padding:3px;
+    cursor:pointer;
+    margin-top:10px;
+   
+
+}
+
+
+.group-users{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid rgb(66, 171, 171);
+    overflow-x: auto;
+
+    /* box-sizing: border-box; */
+    width:70%;
+    margin:auto auto;
+    height:60px;
+}
+.individual-user{
+    background-color: rgb(66, 171, 171);
+    margin:2px 5px;
+    padding:2px 8px;
+    border-radius: 4px;
+    border: 1px solid black;
+    position: relative;
+    height:20px;
+}
+
+#updateCloseBtn{
+    right:-11px;
+    top:-12px;
+    position: absolute;
+    cursor: pointer;
+}
+.ab {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' -225,
+  'opsz' 20
+}
+

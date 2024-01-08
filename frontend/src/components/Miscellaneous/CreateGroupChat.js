@@ -14,6 +14,7 @@ const notifyB=(msg)=>toast.success(msg);
 const CreateGroupChat = () => {
   const {user,toggleModal,setSearchSpace,userarr,setUserarr,chats,setChats,toggleLoad}=ChatState();
   const [GroupName,setGroupName]=useState("");
+  
   const createGroup=()=>{
     if(!GroupName){
         notifyA("Enter GroupName");

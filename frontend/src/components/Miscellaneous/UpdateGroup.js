@@ -12,7 +12,7 @@ const notifyB=(msg)=>toast.success(msg);
 
 
 const UpdateGroup = () => {
-  const {user,setSearchSpace,toggleUpdateGroup,setUpdateGroupModal,chatId,toggleLoad,updateuser,setUpdateuser,groupchat}=ChatState();
+  const {user,setSearchSpace,toggleUpdateGroup,setUpdateGroupModal,chatId,toggleLoad,updateuser,setUpdateuser,groupchat,toggleUpdateChat,chatdetail,setchatdetail}=ChatState();
   const [updatedGroupName,setupdatedGroupName]=useState("");
 
 
@@ -35,6 +35,7 @@ const UpdateGroup = () => {
             notifyB("User Added");
             setUpdateuser("");
             toggleLoad(); 
+            toggleUpdateChat();
             setUpdateGroupModal(false);
         })
     }
@@ -70,6 +71,7 @@ const UpdateGroup = () => {
             notifyB("GroupName Updated");
             setUpdateGroupModal(false);
             toggleLoad();
+            
            
         })
         return;
@@ -113,13 +115,15 @@ const UpdateGroup = () => {
             <div>
                 <p><b>Update Group</b></p>
                 <div className='group-users'>
-                    {groupchat.users.map((user)=>{
+                    {chatdetail.users.map((user)=>{
                         return(
                             <>
                                 <div className='individual-user'>
                                     {user.name}
                                     <span class="material-symbols-outlined ab" id="updateCloseBtn" onClick={()=>{
                                         removeUserFromGroup(user._id);
+                                        toggleUpdateChat();
+
                                     }}>
                                         close
                                     </span>
@@ -130,7 +134,10 @@ const UpdateGroup = () => {
                 </div>
                 <div className='updateip'>
                     <input type="text" placeholder=' New GroupName' value={updatedGroupName} onChange={(e)=>{setupdatedGroupName(e.target.value)}}></input>
-                    <button  id="update" onClick={()=>{updateGroupName()}}>Update</button>
+                    <button  id="update" onClick={()=>{
+                        updateGroupName();
+                        toggleUpdateChat();
+                    }}>Update</button>
                 </div>
                 <div  className='updateip'>
                     <button onClick={()=>{setSearchSpace(true)}}>Add User To Group</button>

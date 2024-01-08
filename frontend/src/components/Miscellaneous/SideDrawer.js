@@ -61,12 +61,14 @@ const SideDrawer = () => {
             </div>
           </div>
       </div>
+
       <div className='box'>
         {searchspace && <Search/>}
         <MyChats/>
         <ChatBox/>
         {profileuser && <Profile/>}
       </div>
+      
       {modalGroup && <CreateGroupChat />}
       {UpdateGroupModal && <UpdateGroup/>}
     </>

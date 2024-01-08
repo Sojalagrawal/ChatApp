@@ -10,12 +10,7 @@ export default function ChatPage() {
  const {user}=ChatState();
   return (
     <div style={{width:"100%"}}>
-      
       {user && <SideDrawer/>}
-      {/* <div>
-        {user && <MyChats/>}
-        {user && <ChatBox/>}
-      </div> */}
     </div>
   )
 }

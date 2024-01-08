@@ -154,5 +154,27 @@ const removeFromGroup=asyncHandler(async(req,res)=>{
     }
 });
 
+const findChat=asyncHandler(async(req,res)=>{
+    const {chatId}=req.body;
+    try{
+        const data=await Chat.findById(chatId)
+        .populate("users","-password")
+        .populate("groupAdmin","-password")
+    
+        if(!data){
+            res.status(404);
+            throw new Error("Chat Not Found");
+        }
+        else{
+            res.json(data);
+        }
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+    
+});
 
-module.exports={accessChat,fetchChats,createGroupChat,renameGroup,addToGroup,removeFromGroup};
+
+module.exports={accessChat,fetchChats,createGroupChat,renameGroup,addToGroup,removeFromGroup,findChat};

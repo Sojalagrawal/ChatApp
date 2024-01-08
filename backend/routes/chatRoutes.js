@@ -1,11 +1,12 @@
 const express=require("express");
 const { protect } = require("../middleware/authMiddleware");
-const { accessChat,fetchChats,createGroupChat,renameGroup,addToGroup,removeFromGroup} = require("../controllers/chatController");
+const { accessChat,fetchChats,createGroupChat,renameGroup,addToGroup,removeFromGroup,findChat} = require("../controllers/chatController");
 const router=express.Router();
 
 
 
 router.route('/').post(protect,accessChat);  //to acess chat bw login user and other user -->if chat doesn't exist it creates the chat
+router.route('/chats').post(protect,findChat);
 router.route('/').get(protect,fetchChats);
 router.route('/group').post(protect,createGroupChat);
 router.route('/rename').put(protect,renameGroup);

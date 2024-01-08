@@ -3,7 +3,7 @@ import "../css/MyChats.css";
 import { ChatState } from '../context/ChatProvider';
 
 const MyChats = () => {
-  const {user,chats,setChats,setName,toggleModal,load,setisGroupChat,setChatId,groupchat,setGroupchat}=ChatState();
+  const {user,chats,setChats,toggleModal,load,setChatId,accessChatDetail}=ChatState();
 
 
   useEffect(()=>{
@@ -22,16 +22,6 @@ const MyChats = () => {
 
 
 
-  const accessChatDetail=((mychat)=>{
-    var name;
-    if(mychat.users && mychat.users.length >= 2 && !(mychat.isGroupChat)){
-        name=mychat.users[0].name===user.name?mychat.users[1].name:mychat.users[0].name;
-    }
-    else{
-      name=mychat.chatName;
-    }
-    return name;
-  });
 
   return (
     <div className="MyChats">
@@ -43,17 +33,9 @@ const MyChats = () => {
            {Array.isArray(chats) && chats.map((mychat)=>{
               return(
                 <div className='chat-data' onClick={()=>{
-                      setName(accessChatDetail(mychat));
+                      // setName(accessChatDetail(mychat));
+                      console.log(mychat._id);
                       setChatId(mychat._id);
-                      if(mychat.isGroupChat){
-                        setisGroupChat(true);
-                        setGroupchat(mychat);
-                        console.log(mychat);
-                      }
-                      else{
-                        setisGroupChat(false);
-                      }
-
                   }} key={mychat._id}>
                   <div className='chatdiv'>
                       {/* <p className='parauser'>{mychat.chatName}</p> */}

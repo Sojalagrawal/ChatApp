@@ -11,8 +11,11 @@
     transition-duration: 2s;
     transition-timing-function: linear;
     transition-delay: 1s;  */
-    transition: width 0.5s ease;
+    /* transition: width 1s ease; */
+
 }
+
+  
 #ip{
     height:10px;
     border-radius: 5px;

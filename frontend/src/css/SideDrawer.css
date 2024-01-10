@@ -52,10 +52,15 @@
 .box{
     display:flex;
     flex-direction: row;
-    border:1px solid red;
+    /* border:1px solid red; */
     margin:auto auto;
     height:90vh;
     width:95vw;
     margin-top:10px;
     justify-content: space-between;
+}
+
+
+#logout{
+    cursor: pointer;
 }

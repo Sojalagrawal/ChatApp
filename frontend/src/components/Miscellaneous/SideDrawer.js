@@ -27,10 +27,6 @@ const SideDrawer = () => {
   }
 
   
-
-  
- 
-
   return (
     <>
       <div className='SideDrawer'>
@@ -46,7 +42,7 @@ const SideDrawer = () => {
             <div onClick={()=>{
               localStorage.clear()
               navigate("/signup")}}>
-              <span class="material-symbols-outlined">
+              <span class="material-symbols-outlined" id="logout">
                   logout
               </span>
             </div>

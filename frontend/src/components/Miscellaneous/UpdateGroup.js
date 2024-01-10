@@ -116,9 +116,9 @@ const UpdateGroup = () => {
         if(chatdetail.isGroupChat){
             notifyB("Group Deleted");
         }
-        else{
-            notifyB("Chat Deleted");
-        }
+        // else{
+        //     notifyB("Chat Deleted");
+        // }
         toggleLoad();
         setChatId("");
         setMessages("");
@@ -178,11 +178,11 @@ const UpdateGroup = () => {
                 </div>}
                 
             </div>}
-            {!chatdetail.isGroupChat && <div>
+            {/* {!chatdetail.isGroupChat && <div>
                 <div className='leave-group'>
                     <button onClick={()=>{DeleteChat()}}>Delete Chat</button>
                 </div>
-            </div>}
+            </div>} */}
         </div>   
     </div>
     

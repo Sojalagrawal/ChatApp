@@ -28,18 +28,19 @@
 
 .AllChats{
     display:flex;
-    border:1px solid yellow;
+    border:2px solid rgb(13, 86, 90);
     height:70vh;
     width:90%;
     margin:auto auto;
     display: flex;
     flex-direction: column;
-    overflow:auto;
+    overflow-y:auto;
 }
 
 .chat-data{
-    height:60px;
-    width:97%;
+    /* height:40px; */
+    padding:17px 0px;
+    width:95%;
     border:2px solid rgb(8, 116, 121);
     background-color: rgb(140, 220, 220);
     border-radius: 5px;

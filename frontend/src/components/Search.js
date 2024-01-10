@@ -5,7 +5,7 @@ import { ChatState } from '../context/ChatProvider';
 
 
 const Search = () => {
-  const {user,setSearchSpace,modalGroup,userarr,toggleLoad,UpdateGroupModal,setUpdateuser,setUpdateGroupModal}=ChatState();
+  const {user,setSearchSpace,modalGroup,userarr,toggleLoad,UpdateGroupModal,setUpdateuser,searchspace}=ChatState();
   const [search,setSearch]=useState("");
   const [searchResult,setSearchResult]=useState([]);
 
@@ -59,7 +59,7 @@ const Search = () => {
   
 
   return (
-    <div className='search1'>
+    <div className="search1">
         <span class="material-symbols-outlined" id="closebtn1" onClick={()=>{setSearchSpace(false)}}>
                   close
         </span>

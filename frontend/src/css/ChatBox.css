@@ -35,3 +35,49 @@
     top:1%;
     cursor:pointer;
 }
+
+#send{
+    cursor: pointer;
+}
+
+
+.display{
+    display:flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width:none;
+}
+
+.sentMessageContent{
+    background-color: aquamarine;
+    display:flex;
+    border-radius:10px;
+    padding:3px;
+    max-width: 70%;
+
+}
+.recievedMessage{
+    display:flex;
+    margin-top:10px;
+}
+.sentMessage{
+    display:flex;
+    justify-content: end;
+    margin-right:10px;
+    margin-top:10px;
+}
+#message-img{
+    height:25px;
+    width:25px;
+    border-radius: 100px;
+}
+.recieveMessageContent{
+    background-color: bisque;
+    border-radius:10px;
+    padding:3px;
+    max-width: 70%;
+
+
+    
+}
+

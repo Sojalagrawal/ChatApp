@@ -48,7 +48,7 @@
 
 .updateip input{
     border-radius: 5px;
-    width:45%;
+    width:50%;
     border:1px solid red;
 }
 .updateip button{
@@ -104,5 +104,12 @@
   'wght' 300,
   'GRAD' -225,
   'opsz' 20
+}
+
+.leave-group button{
+    background-color: red;
+    color:aliceblue;
+    border-radius: 5px;
+    padding:3px;
 }
 

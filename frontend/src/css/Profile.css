@@ -17,16 +17,18 @@
 }
 
 #profilepic{
-    /* max-height:30%; */
-    height:80px;
-
-    width:80px;
-    /* min-width:10%; */
-
+    height:120px;
+    width:120px;
     border-radius: 1000px;
     margin-bottom:5px;
 }
 .para{
     margin:2px;
     box-sizing: border-box;
+}
+#profileCloseBtn{
+    position: absolute;
+    right:-7px;
+    top:-7px;
+    cursor: pointer;
 }

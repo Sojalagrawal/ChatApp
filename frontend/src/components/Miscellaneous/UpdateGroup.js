@@ -12,7 +12,7 @@ const notifyB=(msg)=>toast.success(msg);
 
 
 const UpdateGroup = () => {
-  const {user,setSearchSpace,toggleUpdateGroup,setUpdateGroupModal,chatId,toggleLoad,updateuser,setUpdateuser,groupchat,toggleUpdateChat,chatdetail,setchatdetail}=ChatState();
+  const {user,setSearchSpace,toggleUpdateGroup,setUpdateGroupModal,chatId,setChatId,toggleLoad,updateuser,setUpdateuser,toggleUpdateChat,chatdetail,setMessages}=ChatState();
   const [updatedGroupName,setupdatedGroupName]=useState("");
 
 
@@ -81,11 +81,12 @@ const UpdateGroup = () => {
 
   const removeUserFromGroup=(Id)=>{
     console.log("remove");
+    
     fetch("http://localhost:5000/api/chat/groupremove",{
         method:"put",
         headers:{
-                "Content-Type":"application/json",
-                "Authorization":"Bearer "+user.token,
+            "Content-Type":"application/json",
+            "Authorization":"Bearer "+user.token,
         },
         body:JSON.stringify({
             chatId:chatId,
@@ -94,8 +95,35 @@ const UpdateGroup = () => {
     }).then(res=>res.json())
     .then(data=>{
         notifyB("User Removed");
-        setUpdateGroupModal(false);
         toggleLoad();
+        setUpdateGroupModal(false);
+    })
+  }
+
+
+  const DeleteChat=()=>{
+    fetch("http://localhost:5000/api/chat",{
+        method:"delete",
+        headers:{
+                "Content-Type":"application/json",
+                "Authorization":"Bearer "+user.token,
+        },
+        body:JSON.stringify({
+            chatId:chatId
+        })
+    }).then(res=>res.json())
+    .then(data=>{
+        if(chatdetail.isGroupChat){
+            notifyB("Group Deleted");
+        }
+        else{
+            notifyB("Chat Deleted");
+        }
+        toggleLoad();
+        setChatId("");
+        setMessages("");
+        toggleUpdateChat();
+        setUpdateGroupModal(false);
     })
   }
 
@@ -112,26 +140,26 @@ const UpdateGroup = () => {
             }}>
                 close
             </span>
-            <div>
+            {chatdetail.isGroupChat && <div>
                 <p><b>Update Group</b></p>
-                <div className='group-users'>
-                    {chatdetail.users.map((user)=>{
+                {chatdetail.groupAdmin._id===user._id && <div className='group-users'>
+                    {chatdetail.users.map((User)=>{
                         return(
                             <>
-                                <div className='individual-user'>
-                                    {user.name}
+                                {User._id!==user._id && <div className='individual-user'>
+                                    {User.name}
                                     <span class="material-symbols-outlined ab" id="updateCloseBtn" onClick={()=>{
-                                        removeUserFromGroup(user._id);
+                                        removeUserFromGroup(User._id);
                                         toggleUpdateChat();
 
                                     }}>
                                         close
                                     </span>
-                                </div>
+                                </div>}
                             </>
                         )
                     })}
-                </div>
+                </div>}
                 <div className='updateip'>
                     <input type="text" placeholder=' New GroupName' value={updatedGroupName} onChange={(e)=>{setupdatedGroupName(e.target.value)}}></input>
                     <button  id="update" onClick={()=>{
@@ -139,11 +167,22 @@ const UpdateGroup = () => {
                         toggleUpdateChat();
                     }}>Update</button>
                 </div>
-                <div  className='updateip'>
+                {chatdetail.groupAdmin._id===user._id && <div className='updateip'>
                     <button onClick={()=>{setSearchSpace(true)}}>Add User To Group</button>
-                </div>
+                </div>}
+                {chatdetail.groupAdmin._id!==user._id && <div className='leave-group'>
+                    <button onClick={()=>{removeUserFromGroup(user._id)}}>Leave Group</button>
+                </div>}
+                {chatdetail.groupAdmin._id===user._id && <div className='leave-group'>
+                    <button onClick={()=>{DeleteChat()}}>Delete Group</button>
+                </div>}
                 
-            </div>
+            </div>}
+            {!chatdetail.isGroupChat && <div>
+                <div className='leave-group'>
+                    <button onClick={()=>{DeleteChat()}}>Delete Chat</button>
+                </div>
+            </div>}
         </div>   
     </div>
     

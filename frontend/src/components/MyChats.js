@@ -16,7 +16,7 @@ const MyChats = () => {
     }).then(res=>res.json())
     .then(data=>{
         setChats(data);
-        console.log(chats);
+        // console.log(chats);
     })
   },[load]);
 
@@ -33,19 +33,15 @@ const MyChats = () => {
            {Array.isArray(chats) && chats.map((mychat)=>{
               return(
                 <div className='chat-data' onClick={()=>{
-                      // setName(accessChatDetail(mychat));
                       console.log(mychat._id);
                       setChatId(mychat._id);
                   }} key={mychat._id}>
                   <div className='chatdiv'>
-                      {/* <p className='parauser'>{mychat.chatName}</p> */}
-                      <p className='parauser'>{accessChatDetail(mychat)}</p>
-                      {/* <p className='parauser'>{mychat.latestMessage.sender.name}</p> */}
-
-                      {/* <p className='parauser'>{mychat.latestMessage.content}</p> */}
-
-                      {/* <p className='parauser'>{mychat.users[0].name===user.name?mychat.users[1].name:mychat.users[0].name}</p> */}
-
+                      <p className='parauser' style={{"fontSize":"16px"}}><b>{accessChatDetail(mychat)}</b></p>
+                      {/* <div className='parauser-div'>
+                        <p className='parauser'><b>{mychat.latestMessage && mychat.latestMessage.sender?mychat.latestMessage.sender.name+":":""}</b></p>
+                        <p className='parauser'>{mychat.latestMessage && mychat.latestMessage.content?mychat.latestMessage.content.substr(0,20):""}{mychat.latestMessage && mychat.latestMessage.content && mychat.latestMessage.content.length>=20?"...":""}</p>
+                      </div> */}
 
                   </div>
               </div>

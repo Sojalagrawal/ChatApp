@@ -4,6 +4,7 @@ const User=require("../Models/userModel");
 
 
 
+
 const accessChat=asyncHandler(async(req,res)=>{
     const {userId}=req.body;
     if(!userId){
@@ -20,7 +21,7 @@ const accessChat=asyncHandler(async(req,res)=>{
     }).populate("users","-password").populate("latestMessage");
 
     isChat=await User.populate(isChat,{
-        path:"latestMesaage.sender",
+        path:"latestMessage.sender",
         select:"name pic email",
     })
  
@@ -57,7 +58,7 @@ const fetchChats=asyncHandler(async(req,res)=>{
         .sort({updatedAt:-1})
         .then(async(results)=>{
             results=await User.populate(results,{
-                path:"latestMesaage.sender",
+                path:"latestMessage.sender",
                 select:"name pic email"
             });
             res.status(200).send(results);
@@ -177,4 +178,24 @@ const findChat=asyncHandler(async(req,res)=>{
 });
 
 
-module.exports={accessChat,fetchChats,createGroupChat,renameGroup,addToGroup,removeFromGroup,findChat};
+const deleteGroupChat=asyncHandler(async(req,res)=>{
+    const {chatId}=req.body;
+    try{
+        const data=await Chat.findByIdAndDelete(chatId);
+        
+        if(!data){
+            res.status(404);
+            throw new Error("Chat Not Found");
+        }
+        else{
+            res.json(data);
+        }
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+
+module.exports={accessChat,fetchChats,createGroupChat,renameGroup,addToGroup,removeFromGroup,findChat,deleteGroupChat};

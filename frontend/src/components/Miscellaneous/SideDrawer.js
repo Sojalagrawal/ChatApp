@@ -15,8 +15,7 @@ import UpdateGroup from './UpdateGroup';
 
 const SideDrawer = () => {
   const navigate=useNavigate();
-  const {user,searchspace,setSearchSpace,modalGroup,UpdateGroupModal}=ChatState();
-  const [profileuser,setprofileuser]=useState(false);
+  const {user,searchspace,setSearchSpace,modalGroup,UpdateGroupModal,profileuser,sojal1}=ChatState();
   const sojal=()=>{
     if(searchspace){
       setSearchSpace(false);
@@ -27,15 +26,7 @@ const SideDrawer = () => {
     }
   }
 
-  const sojal1=()=>{
-    if(profileuser){
-      setprofileuser(false);
-    }
-    else{
-      setprofileuser(true);
-
-    }
-  }
+  
 
   
  

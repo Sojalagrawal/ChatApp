@@ -34,11 +34,11 @@ const ChatProvider=({children})=>{
         if(!userinfo){
             navigate("/login");
         }
-    },[]); 
+    },[navigate]); 
 
 
     const accessChatDetail=((mychat)=>{
-      var name;
+      var name="";
       if(mychat.users && mychat.users.length >= 2 && !(mychat.isGroupChat)){
           name=mychat.users[0].name===user.name?mychat.users[1].name:mychat.users[0].name;
       }

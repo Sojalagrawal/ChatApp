@@ -13,8 +13,8 @@ import ChatProvider from './context/ChatProvider';
 
 function App() {
   return (
-    <BrowserRouter>
     <div className="App">
+      <BrowserRouter>
          <ChatProvider>
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
@@ -24,8 +24,8 @@ function App() {
             </Routes>
             <ToastContainer theme="dark"/>
           </ChatProvider>
+      </BrowserRouter>
     </div>
-    </BrowserRouter>
   );
 }
 

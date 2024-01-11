@@ -8,7 +8,6 @@ import SignUp from "./components/Authentication/SignUp";
 import Login from "./components/Authentication/Login";
 import 'react-toastify/dist/ReactToastify.css';
 import ChatProvider from './context/ChatProvider';
-import SideDrawer from './components/Miscellaneous/SideDrawer';
 
 
 

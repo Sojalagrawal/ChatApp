@@ -78,7 +78,7 @@ const ChatBox = () => {
           })
         }).then(res=>res.json())
         .then((data)=>{
-            notifyB("Sent");
+            // notifyB("Sent");
             setMessages([...messages,data]);
             setShowPicker(false);
             console.log(data);
@@ -121,7 +121,7 @@ const ChatBox = () => {
     }
   };
 
-  const onEmojiClick = (emojiData: EmojiClickData) => {
+  const onEmojiClick = (emojiData:EmojiClickData) => {
     setMessageContent((ip)=>ip+emojiData.emoji);
     // setShowPicker(false);
   };

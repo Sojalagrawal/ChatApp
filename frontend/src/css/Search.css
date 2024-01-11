@@ -7,12 +7,17 @@
     width:25%;
     flex-direction: column;
     justify-content: space;
-    /* transition-property: all;
-    transition-duration: 2s;
-    transition-timing-function: linear;
-    transition-delay: 1s;  */
-    /* transition: width 1s ease; */
+    animation-name: sojal;
+    animation-duration: 1s;
 
+}
+@keyframes sojal {
+    from{
+        width:0px;
+    }
+    to{
+        width:25%;
+    }
 }
 
   

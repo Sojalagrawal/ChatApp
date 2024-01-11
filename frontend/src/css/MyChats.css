@@ -43,6 +43,8 @@
     width:95%;
     border:2px solid rgb(8, 116, 121);
     background-color: rgb(140, 220, 220);
+    /* background-color: rgb(240, 255, 249); */
+
     border-radius: 5px;
     display:flex;
     flex-direction: column;

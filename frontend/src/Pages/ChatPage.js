@@ -5,7 +5,7 @@ import SideDrawer from "../components/Miscellaneous/SideDrawer";
 
 
 export default function ChatPage() {
- const {user}=ChatState();
+ const user=localStorage.getItem("userinfo")?JSON.parse(localStorage.getItem("userinfo")):"";
   return (
     <div style={{width:"100%"}}>
       {user && <SideDrawer/>}

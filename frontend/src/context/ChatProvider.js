@@ -13,6 +13,8 @@ const ChatProvider=({children})=>{
     const [updateChatFlag,setUpdateChatFlag]=useState(false);
     const [load,setLoad]=useState(false);
     const [profileuser,setprofileuser]=useState(false);
+    const [logoutModal,setLogoutModal]=useState(false);
+
 
     
     const [messages,setMessages]=useState([]);
@@ -95,7 +97,7 @@ const ChatProvider=({children})=>{
     
 
     return(
-        <ChatContext.Provider value={{user,setUser,chats,setChats,searchspace,setSearchSpace,modalGroup,setmodalGroup,toggleModal,userarr,setUserarr,load,setLoad,toggleLoad,toggleUpdateGroup,UpdateGroupModal,setUpdateGroupModal,chatId,setChatId,updateuser,setUpdateuser,updateChatFlag,setUpdateChatFlag,toggleUpdateChat,chatdetail,setchatdetail,accessChatDetail,profileuser,setprofileuser,sojal1,messages,setMessages}}>
+        <ChatContext.Provider value={{user,setUser,chats,setChats,searchspace,setSearchSpace,modalGroup,setmodalGroup,toggleModal,userarr,setUserarr,load,setLoad,toggleLoad,toggleUpdateGroup,UpdateGroupModal,setUpdateGroupModal,chatId,setChatId,updateuser,setUpdateuser,updateChatFlag,setUpdateChatFlag,toggleUpdateChat,chatdetail,setchatdetail,accessChatDetail,profileuser,setprofileuser,sojal1,messages,setMessages,logoutModal,setLogoutModal}}>
             {children}
         </ChatContext.Provider>
     )

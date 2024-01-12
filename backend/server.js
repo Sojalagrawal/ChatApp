@@ -1,40 +1,44 @@
 const express=require("express");
+const connectDB=require("./config/db");
 const dotenv=require("dotenv");
 const {chats}=require("./data/data")
 const cors = require("cors");
 const path=require("path");
 const PORT=process.env.PORT || 5000;
-const connectDB=require("./config/db");
 const userRoutes=require("./routes/userRoutes")
 const chatRoutes=require("./routes/chatRoutes")
 const messageRoutes=require("./routes/messageRoutes")
-
-
 const {notFound,errorHandler}=require("./middleware/errorMiddleware");
 
 dotenv.config();
+connectDB();
+
 const app=express();
 app.use(cors());
-connectDB();
 
 app.use(express.json());
 app.use("/api/user",userRoutes);
 app.use('/api/chat',chatRoutes);
 app.use('/api/message',messageRoutes);
 
+
+
 //  ----------------Deployement-------------
-// const __dirname1 =path.resolve();
-// if(process.env.NODE_ENV==='production'){
-//     app.use(express.static(path.join(__dirname1,'/frontend/build')))
-//     app.get('*',(req,res)=>{
-//         res.sendFile()
-//     })
-// }
-// else{
-//     app.get("/",(req,res)=>{
-//         res.send("API is Running Successfully");
-//     })
-// }
+const __dirname1 =path.resolve();
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static(path.join(__dirname1,'/frontend/build')))
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname1,"frontend","build","index.html"))
+    })
+}
+else{
+    app.get("/",(req,res)=>{
+        res.send("API is Running Successfully");
+    })
+}
+
+
+
 
 
 app.get('/chats',(req,res)=>{
@@ -67,13 +71,13 @@ io.on("connection",(socket)=>{
     console.log("connected to socket.io");
     socket.on('setup',(userData)=>{
         socket.join(userData._id); //create room for particular user
-        console.log(userData._id)
+        // console.log(userData._id)
         socket.emit("connected");
 
     });
     socket.on("join chat",(room)=>{
         socket.join(room);
-        console.log("User Joined Room: "+room);
+        // console.log("User Joined Room: "+room);
     });
 
     socket.on('typing',(room)=>{

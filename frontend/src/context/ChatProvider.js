@@ -16,6 +16,7 @@ const ChatProvider=({children})=>{
     const [logoutModal,setLogoutModal]=useState(false);
 
 
+
     
     const [messages,setMessages]=useState([]);
     const [userarr,setUserarr]=useState([]);
@@ -24,6 +25,7 @@ const ChatProvider=({children})=>{
     const [chatId,setChatId]=useState("");
     const [updateuser,setUpdateuser]=useState("");
     const [chatdetail,setchatdetail]=useState();
+    const [notification,setNotification]=useState([]);
     
     
     
@@ -97,7 +99,7 @@ const ChatProvider=({children})=>{
     
 
     return(
-        <ChatContext.Provider value={{user,setUser,chats,setChats,searchspace,setSearchSpace,modalGroup,setmodalGroup,toggleModal,userarr,setUserarr,load,setLoad,toggleLoad,toggleUpdateGroup,UpdateGroupModal,setUpdateGroupModal,chatId,setChatId,updateuser,setUpdateuser,updateChatFlag,setUpdateChatFlag,toggleUpdateChat,chatdetail,setchatdetail,accessChatDetail,profileuser,setprofileuser,sojal1,messages,setMessages,logoutModal,setLogoutModal}}>
+        <ChatContext.Provider value={{user,setUser,chats,setChats,searchspace,setSearchSpace,modalGroup,setmodalGroup,toggleModal,userarr,setUserarr,load,setLoad,toggleLoad,toggleUpdateGroup,UpdateGroupModal,setUpdateGroupModal,chatId,setChatId,updateuser,setUpdateuser,updateChatFlag,setUpdateChatFlag,toggleUpdateChat,chatdetail,setchatdetail,accessChatDetail,profileuser,setprofileuser,sojal1,messages,setMessages,logoutModal,setLogoutModal,notification,setNotification}}>
             {children}
         </ChatContext.Provider>
     )

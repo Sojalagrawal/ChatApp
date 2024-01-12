@@ -64,3 +64,33 @@
 #logout{
     cursor: pointer;
 }
+
+.notification-modal{
+    background-color: rgb(122, 198, 198);
+    width:200px;
+    position: absolute;
+    top:40px;
+    right:60px;
+    z-index:30;
+    border-radius: 5px;
+    border:1px solid black;
+    display:flex;
+    flex-direction: column;
+}
+
+
+.notification-badge{
+    position: absolute;
+    right:75px;
+    top:-2px;
+    border-radius: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:40;
+    height:17px;
+    width:17px;
+    background-color: rgb(214, 32, 32);
+    color:white;
+    font-size: 10px;
+}

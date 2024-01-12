@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "../css/ChatBox.css";
 import { ChatState } from '../context/ChatProvider';
 import { toast } from 'react-toastify';
-import Picker,{EmojiClickData} from 'emoji-picker-react';
+import Picker,{ EmojiClickData } from 'emoji-picker-react';
 import io from "socket.io-client";
 import Lottie from 'react-lottie';
 import animationData from "../animations/typing.json";
@@ -16,7 +16,7 @@ var socket,selectedChatCompare;
 
 
 const ChatBox = () => {
-  const {toggleUpdateGroup,chatId,updateChatFlag,setUpdateChatFlag,chatdetail,setchatdetail,accessChatDetail,messages,setMessages}=ChatState();
+  const {toggleUpdateGroup,chatId,updateChatFlag,setUpdateChatFlag,chatdetail,setchatdetail,accessChatDetail,messages,setMessages,notification,setNotification,toggleLoad}=ChatState();
   const [messageContent,setMessageContent]=useState("");
   const [showPicker,setShowPicker]=useState(false);
   const [socketConnected,setsocketConnected]=useState(false);
@@ -55,7 +55,10 @@ const ChatBox = () => {
   useEffect(()=>{
     socket.on("message recieved",(newMessageRecieved)=>{
       if(!selectedChatCompare || selectedChatCompare !== newMessageRecieved.chat._id){
-        //give notification
+        if(!notification.includes(newMessageRecieved)){
+          setNotification([...notification,newMessageRecieved]);
+          toggleLoad();
+        }
       }
       else{
         setMessages([...messages,newMessageRecieved]);
@@ -84,7 +87,6 @@ const ChatBox = () => {
     else{
       setchatdetail("")
     }
- 
   },[chatId,updateChatFlag]);
   
   
@@ -99,11 +101,12 @@ const ChatBox = () => {
       }).then(res=>res.json())
       .then((data)=>{
         setMessages(data);
-        console.log(data);
+        // console.log(data);
         socket.emit('join chat',chatId);
       })
 
       selectedChatCompare=chatId;
+      console.log(notification);
     }
   },[chatId]);
 
@@ -130,7 +133,8 @@ const ChatBox = () => {
             socket.emit('new message',data);
             setMessages([...messages,data]);
             setShowPicker(false);
-            console.log(data);
+            toggleLoad();
+            // console.log(data);
         })
         .catch((err)=>{
            console.log(err);
@@ -172,7 +176,6 @@ const ChatBox = () => {
 
   const onEmojiClick = (emojiData:EmojiClickData) => {
     setMessageContent((ip)=>ip+emojiData.emoji);
-    // setShowPicker(false);
   };
 
 

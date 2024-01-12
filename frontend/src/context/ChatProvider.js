@@ -36,7 +36,7 @@ const ChatProvider=({children})=>{
         if(!userinfo){
             navigate("/login");
         }
-    },[navigate]); 
+    },[]); 
 
 
     const accessChatDetail=((mychat)=>{

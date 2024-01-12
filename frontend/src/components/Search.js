@@ -19,7 +19,7 @@ const Search = () => {
     }
     else{
 
-        fetch(`http://localhost:5000/api/user?search=${search}`,{
+        fetch(`/api/user?search=${search}`,{
           method:"get",
           headers:{
                 "Content-Type":"application/json",
@@ -37,7 +37,7 @@ const Search = () => {
 
 
   const accessChat=(userId)=>{
-    fetch("http://localhost:5000/api/chat",{
+    fetch("/api/chat",{
           method:"post",
           headers:{
                 "Content-Type":"application/json",

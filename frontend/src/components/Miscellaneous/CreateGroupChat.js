@@ -25,7 +25,7 @@ const CreateGroupChat = () => {
         return;
     }
     else{
-        fetch("http://localhost:5000/api/chat/group",{
+        fetch("/api/chat/group",{
             method:"post",
             headers:{
                     "Content-Type":"application/json",

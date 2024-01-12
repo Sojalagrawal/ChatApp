@@ -18,7 +18,7 @@ const UpdateGroup = () => {
 
   useEffect(()=>{
     if(updateuser){
-        fetch("http://localhost:5000/api/chat/groupadd",{
+        fetch("/api/chat/groupadd",{
             method:"put",
             headers:{
                     "Content-Type":"application/json",
@@ -54,7 +54,7 @@ const UpdateGroup = () => {
         return;
     }
     else{
-        fetch("http://localhost:5000/api/chat/rename",{
+        fetch("/api/chat/rename",{
             method:"put",
             headers:{
                     "Content-Type":"application/json",
@@ -82,7 +82,7 @@ const UpdateGroup = () => {
   const removeUserFromGroup=(Id)=>{
     console.log("remove");
     
-    fetch("http://localhost:5000/api/chat/groupremove",{
+    fetch("/api/chat/groupremove",{
         method:"put",
         headers:{
             "Content-Type":"application/json",
@@ -102,7 +102,7 @@ const UpdateGroup = () => {
 
 
   const DeleteChat=()=>{
-    fetch("http://localhost:5000/api/chat",{
+    fetch("/api/chat",{
         method:"delete",
         headers:{
                 "Content-Type":"application/json",

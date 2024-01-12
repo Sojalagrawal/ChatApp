@@ -16,7 +16,7 @@ export default function Login() {
 
 
 const postData=()=>{
-  fetch("http://localhost:5000/api/user/login",{
+  fetch("/api/user/login",{
        method:"post",
        headers:{
             "Content-Type":"application/json"

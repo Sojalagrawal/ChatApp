@@ -8,7 +8,7 @@ import Lottie from 'react-lottie';
 import animationData from "../animations/typing.json";
 
 
-const ENDPOINT="http://localhost:5000";
+const ENDPOINT="";
 var socket,selectedChatCompare;
 
 
@@ -69,7 +69,7 @@ const ChatBox = () => {
 
   useEffect(()=>{
     if(chatId){
-      fetch("http://localhost:5000/api/chat/chats",{
+      fetch("/api/chat/chats",{
         method:"post",
         headers:{
               "Content-Type":"application/json",
@@ -92,7 +92,7 @@ const ChatBox = () => {
   
   useEffect(()=>{
     if(chatId){
-      fetch(`http://localhost:5000/api/message/${chatId}`,{
+      fetch(`/api/message/${chatId}`,{
         method:"get",
         headers:{
           "Content-Type":"application/json",
@@ -117,7 +117,7 @@ const ChatBox = () => {
      socket.emit('stop typing',chatId);
      if(messageContent){
         setMessageContent("");
-        fetch("http://localhost:5000/api/message",{
+        fetch("/api/message",{
           method:"post",
           headers:{
                 "Content-Type":"application/json",

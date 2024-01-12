@@ -7,7 +7,7 @@ const MyChats = () => {
 
 
   useEffect(()=>{
-    fetch("http://localhost:5000/api/chat",{
+    fetch("/api/chat",{
       method:"get",
       headers:{
             "Content-Type":"application/json",

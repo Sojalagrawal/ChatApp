@@ -34,7 +34,7 @@ const submitHandler = async () => {
              return;
          }
  
-         const response = await fetch("http://localhost:5000/api/user", {
+         const response = await fetch("/api/user", {
              method: "post",
              headers: {
                  "Content-Type": "application/json",
